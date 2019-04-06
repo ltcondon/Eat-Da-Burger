@@ -1,0 +1,73 @@
+
+<div class="container" id="main-box">
+    <div class="row">
+        <div class ="col s12 title" id= "title-box">
+            <h1 id= "title">The Many-Faced God</h1>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class= "col s4">
+          <h2>All Men Must Serve.</h2>
+
+          <div class ="container" id="dead-names">
+
+            <ul>
+            {{#each people}}
+                {{#unless alive}}
+                {{> people/person-block alive=true}}
+                {{/unless}}
+            {{/each}}
+            </ul>
+
+          </div>
+
+          <button class="btn" id="raise">Valar Morghulis</button>
+        </div>
+
+        <div class="col s4">
+            [IMAGE]
+
+            <h4>Give a man a name.</h4>
+
+            <form class="create-form">
+
+            <div class="form-group">
+                <label for="person">Name:</label>
+                <input type="text" id="person" name="name">
+            </div>
+
+            <div class="form-group">
+                <label for="alive"></label><br>
+                <input type="radio" name="alive" value="1" checked> Dead<br>
+                <input type="radio" name="alive" value="0"> Alive
+            </div>
+
+            <button type="submit">Add</button>
+            </form>
+
+        </div>
+
+        <div class= "col s4">
+            <h2>All Men Must Die.</h2>
+
+          <div class ="container" id="dead-names">
+
+            <ul>
+              {{#each people}}
+                {{#if alive}}
+                {{> people/person-block alive=false}}
+                {{/if}}
+              {{/each}}
+            </ul>
+
+          </div>
+
+          <button class="btn" id="raise">Valar Dohaeris</button>
+            
+        </div>
+
+    </div>
+</div>
+
