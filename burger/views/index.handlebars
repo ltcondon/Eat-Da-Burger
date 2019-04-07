@@ -2,57 +2,20 @@
 <div class="container" id="main-box">
     <div class="row">
         <div class ="col s12 title" id= "title-box">
-            <h1 id= "title">The Many-Faced God</h1>
+            {{!-- <h1 id= "title">The Many-Faced God</h1> --}}
+            <img src="assets/images/many-faces-text.png" id= "title-text">
+            <hr>
+
+
+            <h4 id="subtitle">Give a man a name, any name.</h4>
         </div>
     </div>
 
     <div class="row">
 
-        <div class= "col s4">
-          <h2>All Men Must Serve.</h2>
-
-          <div class ="container" id="dead-names">
-
-            <ul>
-            {{#each people}}
-                {{#unless alive}}
-                {{> people/person-block alive=true}}
-                {{/unless}}
-            {{/each}}
-            </ul>
-
-          </div>
-
-          <button class="btn" id="raise">Valar Morghulis</button>
-        </div>
-
-        <div class="col s4">
-            [IMAGE]
-
-            <h4>Give a man a name.</h4>
-
-            <form class="create-form">
-
-            <div class="form-group">
-                <label for="person">Name:</label>
-                <input type="text" id="person" name="name">
-            </div>
-
-            <div class="form-group">
-                <label for="alive"></label><br>
-                <input type="radio" name="alive" value="1" checked> Dead<br>
-                <input type="radio" name="alive" value="0"> Alive
-            </div>
-
-            <button type="submit">Add</button>
-            </form>
-
-        </div>
-
-        <div class= "col s4">
-            <h2>All Men Must Die.</h2>
-
-          <div class ="container" id="dead-names">
+        <div class= "col s4 container" id="serve">
+          <h3>All Men Must Serve.</h3>
+          <div class ="container names" id="alive">
 
             <ul>
               {{#each people}}
@@ -60,6 +23,54 @@
                 {{> people/person-block alive=false}}
                 {{/if}}
               {{/each}}
+            </ul>
+
+          </div>
+
+          <button class="btn" id="raise">Valar Morghulis</button>
+        </div>
+
+        <div class="col s4" id="mid-section">
+            <img src="assets/images/jaqen.png" id="jaqen">
+
+
+            <form class="create-form">
+
+            <div class="form-group">
+                <label for="person"></label>
+                <input type="text" id="person" placeholder="Name any name..." name="name">
+            </div>
+
+            <div class="form-group row">
+
+              <div class="col s6">
+                <label for="die"></label><br>
+                <input type="radio" name="die" value="0">Die<br>
+              </div>
+
+              <div class="col s6">
+                <label for="alive"></label><br>
+                <input type="radio" name="alive" value="1" checked>Serve<br>
+              </div>
+                
+            </div>
+
+            <button type="submit">Add</button>
+            </form>
+
+        </div>
+
+        <div class= "col s4 container" id="die">
+            <h3>All Men Must Die.</h3>
+
+          <div class ="container names" id="dead">
+
+            <ul>
+            {{#each people}}
+                {{#unless alive}}
+                {{> people/person-block alive=true}}
+                {{/unless}}
+            {{/each}}
             </ul>
 
           </div>
