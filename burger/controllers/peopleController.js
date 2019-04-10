@@ -16,32 +16,37 @@ router.get("/", function(req, res) {
   });
 });
 
-// router.post("/api/people", function(req, res) {
-//   cat.create(["name", "alive"], [req.body.name, req.body.alive], function(result) {
-//     res.json({ id: result.insertId });
-//   });
-// });
 
-// router.put("/api/people/:id", function(req, res) {
-//   var condition = "id = " + req.params.id;
 
-//   console.log("condition", condition);
+router.post("/api/people", function(req, res) {
+  person.insertOne(["name", "alive"], [req.body.name, req.body.alive], function(result) {
+    res.json({ id: result.insertId });
+  });
+});
 
-//   person.update(
-//     {
-//       alive: req.body.alive
-//     },
-//     condition,
-//     function(result) {
-//       if (result.changedRows === 0) {
-//         // If no rows were changed, then the ID must not exist, so 404
-//         return res.status(404).end();
-//       }
-//       res.status(200).end();
 
-//     }
-//   );
-// });
+router.put("/api/people", function(req, res) {
+  var condition = "id = " + req.body.id;
+
+  console.log("condition", condition);
+
+  person.updateOne(
+    {
+      alive: req.body.alive
+    },
+    condition,
+    function(result) {
+      console.log(result);
+
+      if (result.affectedRows === 0) {
+        // If no rows were changed, then the ID must not exist, so 404
+        return res.status(404).end();
+      }
+      res.status(200).end();
+
+    }
+  );
+});
 
 // // Export routes for server.js to use.
 module.exports = router;
